@@ -10,7 +10,9 @@
 #include <util/delay.h>
 
 #include "DIO_interface.h"
+#include "Dio_stdtypes.h"
 
+#define HIGH 1
 
 
 int main()
@@ -48,8 +50,8 @@ int main()
 
 	while(1)
 	{
-		MCAL_Dio_ReadPort(PORTD_ID,&value);
-		if(value == PORT_HIGH)
+		MCAL_Dio_ReadPin(PORTD_ID,6,&value);
+		if(value == HIGH)
 			{
 				MCAL_Dio_WritePin(PORTC_ID,PIN1_ID,PIN_HIGH);
 			}

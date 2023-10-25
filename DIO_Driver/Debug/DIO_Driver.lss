@@ -3,9 +3,9 @@ DIO_Driver.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000998  00000000  00000000  00000074  2**1
+  0 .text         0000099a  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         0000000a  00800060  00000998  00000a0c  2**0
+  1 .data         0000000a  00800060  0000099a  00000a0e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   2 .stab         00000c54  00000000  00000000  00000a18  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -49,7 +49,7 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	e8 e9       	ldi	r30, 0x98	; 152
+  66:	ea e9       	ldi	r30, 0x9A	; 154
   68:	f9 e0       	ldi	r31, 0x09	; 9
   6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
 
@@ -62,7 +62,7 @@ Disassembly of section .text:
   72:	b1 07       	cpc	r27, r17
   74:	d9 f7       	brne	.-10     	; 0x6c <.do_copy_data_loop>
   76:	0e 94 38 04 	call	0x870	; 0x870 <main>
-  7a:	0c 94 ca 04 	jmp	0x994	; 0x994 <_exit>
+  7a:	0c 94 cb 04 	jmp	0x996	; 0x996 <_exit>
 
 0000007e <__bad_interrupt>:
   7e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -1368,8 +1368,8 @@ Std_type MCAL_Dio_WritePin(E_DioPort Port_Num,E_DioPin Pin_Num,u8PinValue Pin_va
  86e:	08 95       	ret
 
 00000870 <main>:
-#include "DIO_interface.h"
 
+#define HIGH 1
 
 
 int main()
@@ -1518,38 +1518,39 @@ int main()
 
 	while(1)
 	{
-		MCAL_Dio_ReadPort(PORTD_ID,&value);
+		MCAL_Dio_ReadPin(PORTD_ID,6,&value);
  964:	9e 01       	movw	r18, r28
  966:	21 5f       	subi	r18, 0xF1	; 241
  968:	3f 4f       	sbci	r19, 0xFF	; 255
  96a:	83 e0       	ldi	r24, 0x03	; 3
- 96c:	b9 01       	movw	r22, r18
- 96e:	0e 94 21 02 	call	0x442	; 0x442 <MCAL_Dio_ReadPort>
-		if(value == PORT_HIGH)
- 972:	8f 85       	ldd	r24, Y+15	; 0x0f
- 974:	98 89       	ldd	r25, Y+16	; 0x10
- 976:	8f 3f       	cpi	r24, 0xFF	; 255
- 978:	91 05       	cpc	r25, r1
- 97a:	31 f4       	brne	.+12     	; 0x988 <main+0x118>
+ 96c:	66 e0       	ldi	r22, 0x06	; 6
+ 96e:	a9 01       	movw	r20, r18
+ 970:	0e 94 82 02 	call	0x504	; 0x504 <MCAL_Dio_ReadPin>
+		if(value == HIGH)
+ 974:	8f 85       	ldd	r24, Y+15	; 0x0f
+ 976:	98 89       	ldd	r25, Y+16	; 0x10
+ 978:	81 30       	cpi	r24, 0x01	; 1
+ 97a:	91 05       	cpc	r25, r1
+ 97c:	31 f4       	brne	.+12     	; 0x98a <main+0x11a>
 			{
 				MCAL_Dio_WritePin(PORTC_ID,PIN1_ID,PIN_HIGH);
- 97c:	82 e0       	ldi	r24, 0x02	; 2
- 97e:	62 e0       	ldi	r22, 0x02	; 2
- 980:	4f ef       	ldi	r20, 0xFF	; 255
- 982:	0e 94 93 03 	call	0x726	; 0x726 <MCAL_Dio_WritePin>
- 986:	ee cf       	rjmp	.-36     	; 0x964 <main+0xf4>
+ 97e:	82 e0       	ldi	r24, 0x02	; 2
+ 980:	62 e0       	ldi	r22, 0x02	; 2
+ 982:	4f ef       	ldi	r20, 0xFF	; 255
+ 984:	0e 94 93 03 	call	0x726	; 0x726 <MCAL_Dio_WritePin>
+ 988:	ed cf       	rjmp	.-38     	; 0x964 <main+0xf4>
 			}
 		else
 		{
 			MCAL_Dio_WritePin(PORTC_ID,PIN1_ID,PIN_LOW);
- 988:	82 e0       	ldi	r24, 0x02	; 2
- 98a:	62 e0       	ldi	r22, 0x02	; 2
- 98c:	40 e0       	ldi	r20, 0x00	; 0
- 98e:	0e 94 93 03 	call	0x726	; 0x726 <MCAL_Dio_WritePin>
- 992:	e8 cf       	rjmp	.-48     	; 0x964 <main+0xf4>
+ 98a:	82 e0       	ldi	r24, 0x02	; 2
+ 98c:	62 e0       	ldi	r22, 0x02	; 2
+ 98e:	40 e0       	ldi	r20, 0x00	; 0
+ 990:	0e 94 93 03 	call	0x726	; 0x726 <MCAL_Dio_WritePin>
+ 994:	e7 cf       	rjmp	.-50     	; 0x964 <main+0xf4>
 
-00000994 <_exit>:
- 994:	f8 94       	cli
+00000996 <_exit>:
+ 996:	f8 94       	cli
 
-00000996 <__stop_program>:
- 996:	ff cf       	rjmp	.-2      	; 0x996 <__stop_program>
+00000998 <__stop_program>:
+ 998:	ff cf       	rjmp	.-2      	; 0x998 <__stop_program>
