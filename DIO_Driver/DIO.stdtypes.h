@@ -22,17 +22,19 @@ typedef unsigned char boolean;
 #define OK       0
 #define NOT_OK   1
 
-#define PIN_HIGH        1
-#define PIN_LOW         0
 
 #define PORT_HIGH    0xFF
 #define PORT_LOW     0x00
 
-#define PIN_INPUT  0
-#define PIN_OUTPUT 1
+#define PIN_LOW  0x00
+#define PIN_HIGH 0xFF
 
-#define PORT_OUTPUT 0xFF
-#define PORT_INPUT 0x00
+#define PORT_LOW 0x00
+#define PORT_HIGH 0xFF
+
+
+#define OUTPUT 0xFF
+#define INPUT 0x00
 
 #define DIO_INITIALIZED 1
 #define DIO_NOTINITIALIZED 0

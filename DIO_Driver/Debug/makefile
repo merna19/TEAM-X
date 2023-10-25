@@ -35,6 +35,9 @@ DIO_Driver.lss \
 FLASH_IMAGE += \
 DIO_Driver.hex \
 
+EEPROM_IMAGE += \
+DIO_Driver.eep \
+
 SIZEDUMMY += \
 sizedummy \
 
@@ -62,6 +65,12 @@ DIO_Driver.hex: DIO_Driver.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
+DIO_Driver.eep: DIO_Driver.elf
+	@echo 'Create eeprom image (ihex format)'
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex DIO_Driver.elf  "DIO_Driver.eep"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 sizedummy: DIO_Driver.elf
 	@echo 'Invoking: Print Size'
 	-avr-size --format=avr --mcu=atmega32 DIO_Driver.elf
@@ -70,10 +79,10 @@ sizedummy: DIO_Driver.elf
 
 # Other Targets
 clean:
-	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) DIO_Driver.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(EEPROM_IMAGE)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) DIO_Driver.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:

@@ -15,26 +15,40 @@
 
 int main()
 {
-	S_DioSetPortDirection P1={PORTD_ID,PORT_INPUT};
+	S_Dio s1;
 
-	S_DioSetPinDirection p2={PORTC_ID,PIN4_ID,PIN_HIGH};
-	S_DioSetPinDirection p3={PORTA_ID,PIN5_ID,PIN_HIGH};
 
-	u8PortValue x;
-	x = 0xFF;
-	Dio_SetPortDirection(&P1);
-	Dio_ReadPort(PORTD_ID,x);
-	if(x)
+
+
+	S_Dio P1={PORTC_ID,PIN1_ID,OUTPUT};
+
+	S_Dio p2={PORTD_ID,(PIN3_ID | PIN2_ID | PIN6_ID),OUTPUT};
+	S_Dio p3={PORTB_ID,PIN5_ID| PIN7_ID,OUTPUT};
+
+
+	//u8PortValue x;
+	//x = 0xFF;
+	//Dio_SetPortDirection(&P1);
+	//Dio_ReadPort(PORTD_ID,x);
+	//MCAL_Dio_Init(&p2);
+	u8PinValue value;
+	MCAL_Dio_SetPortDirection(&p2);
+	MCAL_Dio_WritePort(PORTD_ID,0x00);
+	MCAL_Dio_WritePin(PORTD_ID,PIN6_ID,PORT_HIGH);
+	MCAL_Dio_ReadPin(p2.port_num,6,value);
+
+
+
+
+	if(value == PIN_HIGH)
 	{
-
-		 Dio_SetPinDirection(&p2);
+		MCAL_Dio_SetPinDirection(&P1);
 	}
 	else
 	{
-		//DDRA |=(1<<3);
-		Dio_SetPinDirection(&p3);
-	}
 
+		MCAL_Dio_SetPinDirection(&p3);
+	}
 
 
 	while(1)
