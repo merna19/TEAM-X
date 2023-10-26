@@ -115,7 +115,7 @@ LOAD e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/av
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xda8
+.text           0x00000000      0xcd2
  *(.vectors)
  .vectors       0x00000000       0x54 e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -197,44 +197,44 @@ LOAD e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/av
                 0x00000082                . = ALIGN (0x2)
  *(.text.*)
  .text.MCAL_Dio_Init
-                0x00000082      0x138 ./DIO.o
+                0x00000082      0x116 ./DIO.o
                 0x00000082                MCAL_Dio_Init
  .text.MCAL_Dio_SetPortDirection
-                0x000001ba       0xce ./DIO.o
-                0x000001ba                MCAL_Dio_SetPortDirection
+                0x00000198       0xbe ./DIO.o
+                0x00000198                MCAL_Dio_SetPortDirection
  .text.MCAL_Dio_SetPinDirection
-                0x00000288      0x138 ./DIO.o
-                0x00000288                MCAL_Dio_SetPinDirection
+                0x00000256      0x116 ./DIO.o
+                0x00000256                MCAL_Dio_SetPinDirection
  .text.MCAL_Dio_ReadPort
-                0x000003c0       0xc2 ./DIO.o
-                0x000003c0                MCAL_Dio_ReadPort
+                0x0000036c       0xba ./DIO.o
+                0x0000036c                MCAL_Dio_ReadPort
  .text.MCAL_Dio_ReadPin
-                0x00000482      0x12e ./DIO.o
-                0x00000482                MCAL_Dio_ReadPin
+                0x00000426      0x136 ./DIO.o
+                0x00000426                MCAL_Dio_ReadPin
  .text.MCAL_Dio_WritePort
-                0x000005b0       0xba ./DIO.o
-                0x000005b0                MCAL_Dio_WritePort
+                0x0000055c       0xa2 ./DIO.o
+                0x0000055c                MCAL_Dio_WritePort
  .text.MCAL_Dio_WritePin
-                0x0000066a      0x136 ./DIO.o
-                0x0000066a                MCAL_Dio_WritePin
+                0x000005fe      0x114 ./DIO.o
+                0x000005fe                MCAL_Dio_WritePin
  .text.MCAL_Dio_WriteSinglePin
-                0x000007a0      0x25a ./DIO.o
-                0x000007a0                MCAL_Dio_WriteSinglePin
+                0x00000712      0x222 ./DIO.o
+                0x00000712                MCAL_Dio_WriteSinglePin
  .text.MCAL_Dio_ReadSinglePin
-                0x000009fa      0x158 ./DIO.o
-                0x000009fa                MCAL_Dio_ReadSinglePin
+                0x00000934      0x162 ./DIO.o
+                0x00000934                MCAL_Dio_ReadSinglePin
  .text.MCAL_Dio_TogglePin
-                0x00000b52      0x174 ./DIO.o
-                0x00000b52                MCAL_Dio_TogglePin
- .text.main     0x00000cc6       0xde ./main.o
-                0x00000cc6                main
- .text.libgcc   0x00000da4        0x0 e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00000da4        0x0 e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x00000da4                . = ALIGN (0x2)
+                0x00000a96      0x15a ./DIO.o
+                0x00000a96                MCAL_Dio_TogglePin
+ .text.main     0x00000bf0       0xde ./main.o
+                0x00000bf0                main
+ .text.libgcc   0x00000cce        0x0 e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00000cce        0x0 e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00000cce                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000da4        0x0 e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00000da4                exit
-                0x00000da4                _exit
+ .fini9         0x00000cce        0x0 e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00000cce                exit
+                0x00000cce                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -253,11 +253,11 @@ LOAD e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/av
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000da4        0x4 e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000cce        0x4 e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000da8                _etext = .
+                0x00000cd2                _etext = .
 
-.data           0x00800060        0xa load address 0x00000da8
+.data           0x00800060        0xa load address 0x00000cd2
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -291,8 +291,8 @@ LOAD e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/av
  *(.bss*)
  *(COMMON)
                 0x0080006a                PROVIDE (__bss_end, .)
-                0x00000da8                __data_load_start = LOADADDR (.data)
-                0x00000db2                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000cd2                __data_load_start = LOADADDR (.data)
+                0x00000cdc                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080006a        0x0
                 0x0080006a                PROVIDE (__noinit_start, .)
