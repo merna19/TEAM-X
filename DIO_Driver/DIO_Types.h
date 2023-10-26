@@ -11,7 +11,7 @@
 
 
 
-
+typedef unsigned char u8PinNumber;
 typedef unsigned char u8PortID;
 typedef unsigned char u8PinID;
 typedef unsigned char u8Direction;

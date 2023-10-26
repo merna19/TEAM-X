@@ -29,9 +29,6 @@ typedef unsigned char boolean;
 #define PIN_LOW  0x00
 #define PIN_HIGH 0xFF
 
-#define PORT_LOW 0x00
-#define PORT_HIGH 0xFF
-
 
 #define OUTPUT 0xFF
 #define INPUT 0x00

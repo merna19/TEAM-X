@@ -130,21 +130,21 @@ Std_type MCAL_Dio_SetPinDirection(S_Dio *Dio_ConfigPin)
 }
 
 
-Std_type MCAL_Dio_ReadPort(E_DioPort Port_Num,u8PortValue *Port_Value)
+Std_type MCAL_Dio_ReadPort(S_Dio *Dio_ReadPort,u8PortValue *Port_Value)
 {
 	Std_type error = OK;
 	if(DIO_STATUS_ERROR == NOT_OK)
 	{
 		error = NOT_OK;
 	}
-	else if(Port_Num >= DIO_CONFIGURED_PORTS)
+	else if(Dio_ReadPort->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
 		error = NOT_OK;
 	}
 	else
 	{
-		switch (Port_Num)
+		switch (Dio_ReadPort->port_num )
 		{
 		case PORTA_ID:
 			*Port_Value = DIO_PINA;
@@ -164,7 +164,7 @@ Std_type MCAL_Dio_ReadPort(E_DioPort Port_Num,u8PortValue *Port_Value)
 	return error;
 }
 
-Std_type MCAL_Dio_ReadPin(E_DioPort Port_Num,E_DioPin Pin_Num,u8PinValue *Pin_Value)
+Std_type MCAL_Dio_ReadPins(S_Dio *Dio_ReadPin,u8PinValue *Pin_Value)
 {
 	Std_type error = OK;
 
@@ -172,7 +172,7 @@ Std_type MCAL_Dio_ReadPin(E_DioPort Port_Num,E_DioPin Pin_Num,u8PinValue *Pin_Va
 	{
 		error = NOT_OK;
 	}
-	else if(Port_Num >= DIO_CONFIGURED_PORTS)
+	else if(Dio_ReadPin->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
 		error = NOT_OK;
@@ -181,19 +181,19 @@ Std_type MCAL_Dio_ReadPin(E_DioPort Port_Num,E_DioPin Pin_Num,u8PinValue *Pin_Va
 	else
 	{
 
-		switch(Port_Num)
+		switch(Dio_ReadPin->port_num)
 		{
 		case PORTA_ID:
-			*Pin_Value = GET_BIT(DIO_PINA,Pin_Num);
+			*Pin_Value = GET_BIT(DIO_PINA,Dio_ReadPin->pin_num);
 			break;
 		case PORTB_ID:
-			*Pin_Value = GET_BIT(DIO_PINB,Pin_Num);
+			*Pin_Value = GET_BIT(DIO_PINB,Dio_ReadPin->pin_num);
 			break;
 		case PORTC_ID:
-			*Pin_Value = GET_BIT(DIO_PINC,Pin_Num);
+			*Pin_Value = GET_BIT(DIO_PINC,Dio_ReadPin->pin_num);
 			break;
 		case PORTD_ID:
-			*Pin_Value = GET_BIT(DIO_PIND,Pin_Num);
+			*Pin_Value = GET_BIT(DIO_PIND,Dio_ReadPin->pin_num);
 			break;
 		}
 	}
@@ -201,22 +201,23 @@ Std_type MCAL_Dio_ReadPin(E_DioPort Port_Num,E_DioPin Pin_Num,u8PinValue *Pin_Va
 }
 
 
-Std_type MCAL_Dio_WritePort(E_DioPort Port_Num,u8PortValue Port_Value)
+Std_type MCAL_Dio_WritePort(S_Dio *Dio_WritePort,u8PortValue Port_Value)
 {
 	Std_type error = OK;
+
 
 	if(DIO_STATUS_ERROR == NOT_OK)
 	{
 		error = NOT_OK;
 	}
-	else if(Port_Num >= DIO_CONFIGURED_PORTS)
+	else if(Dio_WritePort->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
 		error = NOT_OK;
 	}
 	else
 	{
-		switch (Port_Num)
+		switch (Dio_WritePort->port_num)
 		{
 		case PORTA_ID:
 			DIO_PORTA = Port_Value;
@@ -236,7 +237,7 @@ Std_type MCAL_Dio_WritePort(E_DioPort Port_Num,u8PortValue Port_Value)
 }
 
 
-Std_type MCAL_Dio_WritePin(E_DioPort Port_Num,E_DioPin Pin_Num,u8PinValue Pin_value)
+Std_type MCAL_Dio_WritePin(S_Dio *Dio_WritePin,u8PinValue Pin_value)
 {
 	Std_type error = OK;
 	u8RegisterValue Mask1,Mask2;
@@ -244,7 +245,7 @@ Std_type MCAL_Dio_WritePin(E_DioPort Port_Num,E_DioPin Pin_Num,u8PinValue Pin_va
 	{
 		error = NOT_OK;
 	}
-	else if(Port_Num >= DIO_CONFIGURED_PORTS)
+	else if(Dio_WritePin->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
 		error = NOT_OK;
@@ -252,27 +253,121 @@ Std_type MCAL_Dio_WritePin(E_DioPort Port_Num,E_DioPin Pin_Num,u8PinValue Pin_va
 	else
 	{
 
-		Mask2 = ((Pin_Num) & (Pin_value));
-		switch(Port_Num)
+		Mask2 = ((Dio_WritePin->pin_num) & (Pin_value));
+		switch(Dio_WritePin->port_num)
 		{
 		case PORTA_ID:
-			Mask1 = ((DIO_PORTA) & (~(Pin_Num)));
-			DIO_DDRA = Mask1 | Mask2;
+			Mask1 = ((DIO_PORTA) & (~(Dio_WritePin->pin_num)));
+			DIO_PORTA = Mask1 | Mask2;
 			break;
 		case PORTB_ID:
-			Mask1 = ((DIO_PORTB) & (~(Pin_Num)));
+			Mask1 = ((DIO_PORTB) & (~(Dio_WritePin->pin_num)));
 			DIO_PORTB = Mask1 | Mask2;
 			break;
 		case PORTC_ID:
-			Mask1 = ((DIO_PORTC) & (~(Pin_Num)));
+			Mask1 = ((DIO_PORTC) & (~(Dio_WritePin->pin_num)));
 			DIO_PORTC = Mask1 | Mask2;
 			break;
 		case PORTD_ID:
-			Mask1 = ((DIO_PORTD) & (~(Pin_Num)));
+			Mask1 = ((DIO_PORTD) & (~(Dio_WritePin->pin_num)));
 			DIO_PORTD = Mask1 | Mask2;
 			break;
 
 		}
 	}
 	return error;
+}
+
+Std_type MCAL_Dio_ReadPin(S_Dio *Dio_ReadPin,E_DioPin Pin_Num,u8PinValue *Pin_Value)
+{
+	Std_type error = OK;
+	u8PinNumber bitNumber;
+
+	if(DIO_STATUS_ERROR == NOT_OK)
+	{
+		error = NOT_OK;
+
+
+	}
+	else if(Dio_ReadPin->port_num >= DIO_CONFIGURED_PORTS)
+	{
+
+		error = NOT_OK;
+
+	}
+	else
+	{
+		for (int i = 0; i < DIO_CONFIGURED_PINS; i++) {
+			if (Pin_Num & (1 << i)) {
+				bitNumber = i;
+				break;
+			}
+		}
+		switch(Dio_ReadPin->port_num)
+				{
+				case PORTA_ID:
+					*Pin_Value = GET_BIT(DIO_PINA,bitNumber);
+					break;
+				case PORTB_ID:
+					*Pin_Value = GET_BIT(DIO_PINB,bitNumber);
+					break;
+				case PORTC_ID:
+					*Pin_Value = GET_BIT(DIO_PINC,bitNumber);
+					break;
+				case PORTD_ID:
+					*Pin_Value = GET_BIT(DIO_PIND,bitNumber);
+					break;
+				}
+	}
+	return error;
+}
+
+Std_type MCAL_Dio_TogglePin(S_Dio *Dio_TogglePin,E_DioPin Pin_Num)
+{
+
+	Std_type error = OK;
+	u8PinNumber bitNumber;
+
+	if(DIO_STATUS_ERROR == NOT_OK)
+	{
+		error = NOT_OK;
+
+
+	}
+	else if(Dio_TogglePin->port_num >= DIO_CONFIGURED_PORTS)
+	{
+
+		error = NOT_OK;
+
+	}
+	else
+	{
+		for (int i = 0; i < DIO_CONFIGURED_PINS; i++) {
+			if (Pin_Num & (1 << i)) {
+				bitNumber = i;
+				break;
+			}
+		}
+
+		switch (Dio_TogglePin->port_num)
+		{
+		case PORTA_ID:
+			DIO_PORTA = DIO_PORTA ^ (1<<bitNumber);
+			break;
+		case PORTB_ID:
+			DIO_PORTB = DIO_PORTB ^ (1<<bitNumber);
+			break;
+		case PORTC_ID:
+			DIO_PORTB = DIO_PORTC ^ (1<<bitNumber);
+			break;
+		case PORTD_ID:
+			DIO_PORTB = DIO_PORTD ^ (1<<bitNumber);
+
+
+			break;
+		}
+	}
+
+	return error;
+
 }
