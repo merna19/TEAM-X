@@ -21,8 +21,8 @@ typedef unsigned char boolean;
 #define OK       0
 #define NOT_OK   1
 
-#define HIGH     1
-#define LOW         0
+#define LOGIC_HIGH     1
+#define LOGIC_LOW         0
 
 #define PORT_HIGH    0xFF
 #define PORT_LOW     0x00

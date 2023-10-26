@@ -24,7 +24,7 @@ int main()
 
 	S_Dio P1={PORTC_ID,PIN1_ID |PIN7_ID ,OUTPUT};
 
-	S_Dio p2={PORTB_ID,(PIN3_ID ),OUTPUT };
+	S_Dio p2={PORTB_ID,(PIN3_ID | PIN5_ID),OUTPUT };
 	S_Dio p3={PORTB_ID,(PIN5_ID| PIN7_ID|PIN4_ID),OUTPUT};
 
 
@@ -43,12 +43,12 @@ int main()
 	//MCAL_Dio_SetPinDirection(&P1);
 	//MCAL_Dio_SetPinDirection(&p2);
 	//MCAL_Dio_WritePort(&p3,0x8F8);
-	MCAL_Dio_WritePin(&p3,PIN_HIGH);
+	//MCAL_Dio_WritePin(&p3,PIN_HIGH);
 	//MCAL_Dio_WritePort(&p2,PORT_HIGH);
-	PORTB = 0xFF;
 
+	//MCAL_Dio_WritePin(&p2,PIN5_ID,1);
 
-
+	//PORTB |=(1<<5);
 
 
 
@@ -57,17 +57,8 @@ int main()
 	while(1)
 	{
 
-		MCAL_Dio_ReadPin(&p2,PIN5_ID,&x);
-			if(x == 1)
-			{
-				DDRA = 0xFF;
-			}
-			else
-			{
-				DDRD =0xFF;
-			}
 
-			_delay_ms(500);
+
 
 	}
 

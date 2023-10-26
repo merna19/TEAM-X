@@ -26,10 +26,12 @@ Std_type MCAL_Dio_SetPinDirection(S_Dio *Dio_ConfigPin);
 Std_type MCAL_Dio_ReadPort(S_Dio *Dio_ReadPort,u8PortValue *Port_Value);
 Std_type MCAL_Dio_ReadPins(S_Dio *Dio_ReadPin,u8PinValue *Pin_Value);
 
-Std_type MCAL_Dio_ReadPin(S_Dio *Dio_ReadPin,E_DioPin Pin_Num,u8PinValue *Pin_Value);
+Std_type MCAL_Dio_ReadSinglePin(S_Dio *Dio_ReadPin,E_DioPin Pin_Num,u8PinValue *Pin_Value);
 
 Std_type MCAL_Dio_WritePort(S_Dio *Dio_WritePort,u8PortValue Port_Value);
 Std_type MCAL_Dio_WritePin(S_Dio *Dio_WritePin,u8PinValue Pin_value);
+
+Std_type MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinValue Pin_value);
 
 
 Std_type MCAL_Dio_TogglePin(S_Dio *Dio_TogglePin,E_DioPin Pin_Num);

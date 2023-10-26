@@ -6,6 +6,9 @@
  */
 
 #include "DIO_interface.h"
+#include "DIO.stdtypes.h"
+
+
 
 Std_type MCAL_Dio_Init(S_Dio *Dio_Config)
 {
@@ -164,7 +167,7 @@ Std_type MCAL_Dio_ReadPort(S_Dio *Dio_ReadPort,u8PortValue *Port_Value)
 	return error;
 }
 
-Std_type MCAL_Dio_ReadPins(S_Dio *Dio_ReadPin,u8PinValue *Pin_Value)
+Std_type MCAL_Dio_ReadPin(S_Dio *Dio_ReadPin,u8PinValue *Pin_Value)
 {
 	Std_type error = OK;
 
@@ -278,7 +281,78 @@ Std_type MCAL_Dio_WritePin(S_Dio *Dio_WritePin,u8PinValue Pin_value)
 	return error;
 }
 
-Std_type MCAL_Dio_ReadPin(S_Dio *Dio_ReadPin,E_DioPin Pin_Num,u8PinValue *Pin_Value)
+Std_type MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinValue Pin_value)
+{
+		Std_type error = OK;
+		u8PinNumber bitNumber;
+		if(DIO_STATUS_ERROR == NOT_OK)
+		{
+			error = NOT_OK;
+		}
+		else if(Dio_WritePin->port_num >= DIO_CONFIGURED_PORTS)
+		{
+
+			error = NOT_OK;
+		}
+		else
+		{
+			for (int i = 0; i < DIO_CONFIGURED_PINS; i++) {
+						if (Pin_Num & (1 << i)) {
+							bitNumber = i;
+							break;
+						}
+					}
+			switch(Dio_WritePin->port_num)
+					{
+					case PORTA_ID:
+						if(Pin_value == 1) // compare with one as i define LOGIC_HIGH 1 in DIO_std but ican't use it
+						{
+							SET_BIT(DIO_PORTA,bitNumber);
+						}
+						else
+						{
+							CLEAR_BIT(DIO_PORTA,bitNumber);
+						}
+						break;
+					case PORTB_ID:
+						if(Pin_value == 1)
+						{
+							SET_BIT(DIO_PORTB,bitNumber);
+						}
+						else
+						{
+							CLEAR_BIT(DIO_PORTB,bitNumber);
+						}
+						break;
+					case PORTC_ID:
+						if(Pin_value == 1)
+						{
+							SET_BIT(DIO_PORTC,bitNumber);
+						}
+						else
+						{
+							CLEAR_BIT(DIO_PORTC,bitNumber);
+						}
+						break;
+					case PORTD_ID:
+						if(Pin_value == 1)
+						{
+							SET_BIT(DIO_PORTD,bitNumber);
+						}
+						else
+						{
+							CLEAR_BIT(DIO_PORTD,bitNumber);
+						}
+						break;
+		}
+
+		}
+
+		return error;
+
+}
+
+Std_type MCAL_Dio_ReadSinglePin(S_Dio *Dio_ReadPin,E_DioPin Pin_Num,u8PinValue *Pin_Value)
 {
 	Std_type error = OK;
 	u8PinNumber bitNumber;
