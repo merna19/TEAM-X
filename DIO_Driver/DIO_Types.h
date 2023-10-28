@@ -17,7 +17,7 @@ typedef unsigned char u8PinID;
 typedef unsigned char u8Direction;
 typedef unsigned char u8PortValue;
 typedef unsigned char u8PinValue;
-typedef unsigned char Std_type;
+typedef unsigned char E_ErrorType;
 typedef unsigned char u8RegisterValue;
 
 

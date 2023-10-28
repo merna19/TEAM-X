@@ -9,19 +9,20 @@
 #include "DIO.stdtypes.h"
 
 
-
-Std_type MCAL_Dio_Init(S_Dio *Dio_Config)
+E_ErrorType MCAL_Dio_Init(S_Dio *Dio_Config)
 {
-	Std_type error = OK;
+	E_ErrorType error = E_OK;
 	u8RegisterValue Mask1,Mask2;
-	if(DIO_STATUS_ERROR == NOT_OK)
+
+
+	if(DIO_STATUS_ERROR == E_NOT_OK)
 	{
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else if(Dio_Config->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else
 	{
@@ -52,17 +53,18 @@ Std_type MCAL_Dio_Init(S_Dio *Dio_Config)
 	return error;
 }
 
-Std_type MCAL_Dio_SetPortDirection(S_Dio *Dio_ConfigPort)
+E_ErrorType MCAL_Dio_SetPortDirection(S_Dio *Dio_ConfigPort)
 {
-	Std_type error = OK;
-	if(DIO_STATUS_ERROR == NOT_OK)
+	E_ErrorType error = E_OK;
+
+	if(DIO_STATUS_ERROR == E_NOT_OK)
 	{
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else if(Dio_ConfigPort->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else
 	{
@@ -88,20 +90,20 @@ Std_type MCAL_Dio_SetPortDirection(S_Dio *Dio_ConfigPort)
 	return error;
 }
 
-Std_type MCAL_Dio_SetPinDirection(S_Dio *Dio_ConfigPin)
+E_ErrorType MCAL_Dio_SetPinDirection(S_Dio *Dio_ConfigPin)
 {
-	Std_type error = OK;
+	E_ErrorType error = E_OK;
 	u8RegisterValue Mask1,Mask2;
 
-	if(DIO_STATUS_ERROR == NOT_OK)
+	if(DIO_STATUS_ERROR == E_NOT_OK)
 	{
 
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else if(Dio_ConfigPin->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else
 	{
@@ -133,17 +135,17 @@ Std_type MCAL_Dio_SetPinDirection(S_Dio *Dio_ConfigPin)
 }
 
 
-Std_type MCAL_Dio_ReadPort(S_Dio *Dio_ReadPort,u8PortValue *Port_Value)
+E_ErrorType MCAL_Dio_ReadPort(S_Dio *Dio_ReadPort,u8PortValue *Port_Value)
 {
-	Std_type error = OK;
-	if(DIO_STATUS_ERROR == NOT_OK)
+	E_ErrorType error = E_OK;
+	if(DIO_STATUS_ERROR == E_NOT_OK)
 	{
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else if(Dio_ReadPort->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else
 	{
@@ -167,18 +169,18 @@ Std_type MCAL_Dio_ReadPort(S_Dio *Dio_ReadPort,u8PortValue *Port_Value)
 	return error;
 }
 
-Std_type MCAL_Dio_ReadPin(S_Dio *Dio_ReadPin,u8PinValue *Pin_Value)
+E_ErrorType MCAL_Dio_ReadPin(S_Dio *Dio_ReadPin,u8PinValue *Pin_Value)
 {
-	Std_type error = OK;
+	E_ErrorType error = E_OK;
 
-	if(DIO_STATUS_ERROR == NOT_OK)
+	if(DIO_STATUS_ERROR == E_NOT_OK)
 	{
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else if(Dio_ReadPin->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
-		error = NOT_OK;
+		error = E_NOT_OK;
 
 	}
 	else
@@ -204,19 +206,19 @@ Std_type MCAL_Dio_ReadPin(S_Dio *Dio_ReadPin,u8PinValue *Pin_Value)
 }
 
 
-Std_type MCAL_Dio_WritePort(S_Dio *Dio_WritePort,u8PortValue Port_Value)
+E_ErrorType MCAL_Dio_WritePort(S_Dio *Dio_WritePort,u8PortValue Port_Value)
 {
-	Std_type error = OK;
+	E_ErrorType error = E_OK;
 
 
-	if(DIO_STATUS_ERROR == NOT_OK)
+	if(DIO_STATUS_ERROR == E_NOT_OK)
 	{
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else if(Dio_WritePort->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else
 	{
@@ -240,18 +242,18 @@ Std_type MCAL_Dio_WritePort(S_Dio *Dio_WritePort,u8PortValue Port_Value)
 }
 
 
-Std_type MCAL_Dio_WritePin(S_Dio *Dio_WritePin,u8PinValue Pin_value)
+E_ErrorType MCAL_Dio_WritePin(S_Dio *Dio_WritePin,u8PinValue Pin_value)
 {
-	Std_type error = OK;
+	E_ErrorType error = E_OK;
 	u8RegisterValue Mask1,Mask2;
-	if(DIO_STATUS_ERROR == NOT_OK)
+	if(DIO_STATUS_ERROR == E_NOT_OK)
 	{
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else if(Dio_WritePin->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
-		error = NOT_OK;
+		error = E_NOT_OK;
 	}
 	else
 	{
@@ -281,18 +283,18 @@ Std_type MCAL_Dio_WritePin(S_Dio *Dio_WritePin,u8PinValue Pin_value)
 	return error;
 }
 
-Std_type MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinValue Pin_value)
+E_ErrorType MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinValue Pin_value)
 {
-		Std_type error = OK;
+		E_ErrorType error = E_OK;
 		u8PinNumber bitNumber;
-		if(DIO_STATUS_ERROR == NOT_OK)
+		if(DIO_STATUS_ERROR == E_NOT_OK)
 		{
-			error = NOT_OK;
+			error = E_NOT_OK;
 		}
 		else if(Dio_WritePin->port_num >= DIO_CONFIGURED_PORTS)
 		{
 
-			error = NOT_OK;
+			error = E_NOT_OK;
 		}
 		else
 		{
@@ -352,21 +354,21 @@ Std_type MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinValue
 
 }
 
-Std_type MCAL_Dio_ReadSinglePin(S_Dio *Dio_ReadPin,E_DioPin Pin_Num,u8PinValue *Pin_Value)
+E_ErrorType MCAL_Dio_ReadSinglePin(S_Dio *Dio_ReadPin,E_DioPin Pin_Num,u8PinValue *Pin_Value)
 {
-	Std_type error = OK;
+	E_ErrorType error = E_OK;
 	u8PinNumber bitNumber;
 
-	if(DIO_STATUS_ERROR == NOT_OK)
+	if(DIO_STATUS_ERROR == E_NOT_OK)
 	{
-		error = NOT_OK;
+		error = E_NOT_OK;
 
 
 	}
 	else if(Dio_ReadPin->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
-		error = NOT_OK;
+		error = E_NOT_OK;
 
 	}
 	else
@@ -396,22 +398,22 @@ Std_type MCAL_Dio_ReadSinglePin(S_Dio *Dio_ReadPin,E_DioPin Pin_Num,u8PinValue *
 	return error;
 }
 
-Std_type MCAL_Dio_TogglePin(S_Dio *Dio_TogglePin,E_DioPin Pin_Num)
+E_ErrorType MCAL_Dio_TogglePin(S_Dio *Dio_TogglePin,E_DioPin Pin_Num)
 {
 
-	Std_type error = OK;
+	E_ErrorType error = E_OK;
 	u8PinNumber bitNumber;
 
-	if(DIO_STATUS_ERROR == NOT_OK)
+	if(DIO_STATUS_ERROR == E_NOT_OK)
 	{
-		error = NOT_OK;
+		error = E_NOT_OK;
 
 
 	}
 	else if(Dio_TogglePin->port_num >= DIO_CONFIGURED_PORTS)
 	{
 
-		error = NOT_OK;
+		error = E_NOT_OK;
 
 	}
 	else

@@ -19,8 +19,8 @@ typedef unsigned char boolean;
 #define TRUE        0
 #endif
 
-#define OK       0
-#define NOT_OK   1
+#define E_OK       0
+#define E_NOT_OK   1
 
 
 #define PORT_HIGH    0xFF
@@ -37,7 +37,7 @@ typedef unsigned char boolean;
 #define DIO_NOTINITIALIZED 0
 
 
-#define DIO_STATUS_ERROR OK
+#define DIO_STATUS_ERROR E_OK
 
 #define DIO_CONFIGURED_PORTS    4
 #define DIO_CONFIGURED_PINS     8

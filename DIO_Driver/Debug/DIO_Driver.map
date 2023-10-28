@@ -323,9 +323,9 @@ LOAD e:/mohamed/nti/nti/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/av
  .stab          0x00000c54      0x390 ./main.o
                                 0x474 (size before relaxing)
 
-.stabstr        0x00000000      0xc09
+.stabstr        0x00000000      0xc0c
  *(.stabstr)
- .stabstr       0x00000000      0xc09 ./DIO.o
+ .stabstr       0x00000000      0xc0c ./DIO.o
 
 .stab.excl
  *(.stab.excl)

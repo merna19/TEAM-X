@@ -18,8 +18,8 @@ typedef unsigned char boolean;
 #define TRUE        0
 #endif
 
-#define OK       0
-#define NOT_OK   1
+#define E_OK      0
+#define E_NOT_OK   1
 
 #define LOGIC_HIGH     1
 #define LOGIC_LOW         0
@@ -31,10 +31,10 @@ typedef unsigned char boolean;
 #define PIN_LOW 0x00
 
 #define DIO_INITIALIZED 1
-#define DIO_NOTINITIALIZED 0
+#define DIO_NOTINITIALIZED E_OK
 
 
-#define DIO_STATUS_ERROR OK
+#define DIO_STATUS_ERROR  OK
 
 
 #define NULL_PTR    ((void*)0)
