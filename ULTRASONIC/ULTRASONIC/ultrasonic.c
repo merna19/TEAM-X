@@ -21,9 +21,9 @@ void HAL_ULTRASONIC_u8ReadDistance(unsigned short* distance)
 	unsigned short a,high,b;
 	TCCR1A = 0;
 	TIFR = (1<<ICF1);  	/* Clear ICF (Input Capture flag)  */
-	DIO_vpinwrite('D',5,1);
+	DIO_vpinwrite(TRIGGER_PORT,TRIGGER_PIN,1);
 	_delay_us(50);
-	DIO_vpinwrite('D',5,0);
+	DIO_vpinwrite(TRIGGER_PORT,TRIGGER_PIN,0);
 	
 	TCCR1B = 0xc1;  	/* Rising edge, no prescaler , noise canceler*/
 	while ((TIFR&(1<<ICF1)) == 0);
