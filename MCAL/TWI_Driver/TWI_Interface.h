@@ -14,7 +14,7 @@
 #include "TWI_Types.h"
 #include "TWI_Registers.h"
 #include "../DIO_Driver/DIO_interface.h"
-#include <avr/io.h>
+//#include <avr/io.h>
 
 /* Function that initializes the TWI  */
 void MCAL_TWI_init();
