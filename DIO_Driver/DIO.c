@@ -77,7 +77,6 @@ E_ErrorType MCAL_Dio_SetPortDirection(S_Dio *Dio_ConfigPort)
 			DIO_DDRB = Dio_ConfigPort->Direction;
 			break;
 		case PORTC_ID:
-
 			DIO_DDRC = Dio_ConfigPort->Direction;
 			break;
 		case PORTD_ID:
@@ -185,7 +184,6 @@ E_ErrorType MCAL_Dio_ReadPin(S_Dio *Dio_ReadPin,u8PinValue *Pin_Value)
 	}
 	else
 	{
-
 		switch(Dio_ReadPin->port_num)
 		{
 		case PORTA_ID:
@@ -307,7 +305,7 @@ E_ErrorType MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinVa
 			switch(Dio_WritePin->port_num)
 					{
 					case PORTA_ID:
-						if(Pin_value == 1) // compare with one as i define LOGIC_HIGH 1 in DIO_std but ican't use it
+						if(Pin_value == LOGIC_HIGH) // compare with one as i define LOGIC_HIGH 1 in DIO_std but ican't use it
 						{
 							SET_BIT(DIO_PORTA,bitNumber);
 						}
@@ -317,7 +315,7 @@ E_ErrorType MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinVa
 						}
 						break;
 					case PORTB_ID:
-						if(Pin_value == 1)
+						if(Pin_value == LOGIC_HIGH)
 						{
 							SET_BIT(DIO_PORTB,bitNumber);
 						}
@@ -327,7 +325,7 @@ E_ErrorType MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinVa
 						}
 						break;
 					case PORTC_ID:
-						if(Pin_value == 1)
+						if(Pin_value == LOGIC_HIGH)
 						{
 							SET_BIT(DIO_PORTC,bitNumber);
 						}
@@ -337,7 +335,7 @@ E_ErrorType MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinVa
 						}
 						break;
 					case PORTD_ID:
-						if(Pin_value == 1)
+						if(Pin_value == LOGIC_HIGH)
 						{
 							SET_BIT(DIO_PORTD,bitNumber);
 						}
