@@ -15,7 +15,7 @@ void MCAL_TWI_init()
 	CLEAR_BIT(TWSR, TWPS0);
 	CLEAR_BIT(TWSR, TWPS1);
 	/* Set the bit rate */
-	TWBR = (uint8_t)TWI_TWBR_VALUE;
+	TWBR = (unsigned char)TWI_TWBR_VALUE;
 	/* Enable the TWI */
 	SET_BIT(TWCR, TWEN);
 }
