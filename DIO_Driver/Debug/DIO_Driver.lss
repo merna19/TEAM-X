@@ -348,7 +348,6 @@ E_ErrorType MCAL_Dio_SetPortDirection(S_Dio *Dio_ConfigPort)
  220:	11 c0       	rjmp	.+34     	; 0x244 <MCAL_Dio_SetPortDirection+0xac>
 			break;
 		case PORTC_ID:
-
 			DIO_DDRC = Dio_ConfigPort->Direction;
  222:	e4 e3       	ldi	r30, 0x34	; 52
  224:	f0 e0       	ldi	r31, 0x00	; 0
@@ -741,7 +740,6 @@ E_ErrorType MCAL_Dio_ReadPin(S_Dio *Dio_ReadPin,u8PinValue *Pin_Value)
 	}
 	else
 	{
-
 		switch(Dio_ReadPin->port_num)
  454:	ea 81       	ldd	r30, Y+2	; 0x02
  456:	fb 81       	ldd	r31, Y+3	; 0x03
@@ -1315,7 +1313,7 @@ E_ErrorType MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinVa
  7c0:	af c0       	rjmp	.+350    	; 0x920 <__stack+0xc1>
 					{
 					case PORTA_ID:
-						if(Pin_value == 1) // compare with one as i define LOGIC_HIGH 1 in DIO_std but ican't use it
+						if(Pin_value == LOGIC_HIGH) // compare with one as i define LOGIC_HIGH 1 in DIO_std but ican't use it
  7c2:	88 85       	ldd	r24, Y+8	; 0x08
  7c4:	81 30       	cpi	r24, 0x01	; 1
  7c6:	a1 f4       	brne	.+40     	; 0x7f0 <MCAL_Dio_WriteSinglePin+0xde>
@@ -1369,7 +1367,7 @@ E_ErrorType MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinVa
 						}
 						break;
 					case PORTB_ID:
-						if(Pin_value == 1)
+						if(Pin_value == LOGIC_HIGH)
  81a:	88 85       	ldd	r24, Y+8	; 0x08
  81c:	81 30       	cpi	r24, 0x01	; 1
  81e:	a1 f4       	brne	.+40     	; 0x848 <MCAL_Dio_WriteSinglePin+0x136>
@@ -1423,7 +1421,7 @@ E_ErrorType MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinVa
 						}
 						break;
 					case PORTC_ID:
-						if(Pin_value == 1)
+						if(Pin_value == LOGIC_HIGH)
  872:	88 85       	ldd	r24, Y+8	; 0x08
  874:	81 30       	cpi	r24, 0x01	; 1
  876:	a1 f4       	brne	.+40     	; 0x8a0 <__stack+0x41>
@@ -1477,7 +1475,7 @@ E_ErrorType MCAL_Dio_WriteSinglePin(S_Dio *Dio_WritePin,E_DioPin Pin_Num,u8PinVa
 						}
 						break;
 					case PORTD_ID:
-						if(Pin_value == 1)
+						if(Pin_value == LOGIC_HIGH)
  8ca:	88 85       	ldd	r24, Y+8	; 0x08
  8cc:	81 30       	cpi	r24, 0x01	; 1
  8ce:	a1 f4       	brne	.+40     	; 0x8f8 <__stack+0x99>
