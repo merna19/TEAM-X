@@ -8,7 +8,7 @@ typedef enum{
 	TIMER1_E_OK=0,
 	TIMER1_E_NOT_OK,
 	TIMER1_E_NULL_PTR
-}E_Error_Type;
+}E__Error__Type;
 
 typedef enum{
 	TIMER1_STOP=0,
@@ -54,6 +54,8 @@ typedef enum{
 	RISING,
 	FALLING
 }ICU_Edge_type;
+
+
 
 
 #endif /* TIMER1_TIMER1_TYPES_H_ */
