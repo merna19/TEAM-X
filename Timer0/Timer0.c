@@ -7,7 +7,7 @@
 
 #include "Timer0_interface.h"
 
-
+#define TIMER0_MODE OVER_FLOW_MODE
 /***************************************************************
  *
  *                         Functions Definitions
@@ -23,8 +23,34 @@
  *
  */
 
+/*TIMER0 CTC MODE
+ * Description:
+ * Put our desired Compare value to match, It fires an interrupt when this value is matched by timer0
+ * For clock=1Mhz and prescale every count will take 1ms
+ * (Tick Time = (prescaler / freq.) ms
+ * so we just need 250 counts to get 250ms every compare match.
+ * put initial timer counter=0 and output compare register 0 --> 255 (250ms per compare match)
+ * so we need timer to make 2 compare matches to get a 0.5 second
+ *
+ * Time0 Comapet match mode  ISR(TIMER0_COMP_vect)
+ */
 
-E_ErrorType MCAL_Timer0_OVF_Init(E_Prescaler prescaler)
+/*TIMER0 FAST PWM
+ *  Description:
+ * Put our desired Duty Cycle to generate a PWM Signal On Pin PB3
+ * F_PWM=(F_CPU)/(256*N) = (16^6)/(256*1024) = 61
+ * Duty Cycle can be changed be update the value in The Compare Register
+ */
+
+/*TIMER0 PCP PWM
+ * Description:
+ * The PWM resolution for the phase correct PWM mode is fixed to eight bits. In phase correct
+ * Put our desired Duty Cycle to generate a PWM Signal On Pin PB3
+ * F_PWM=(F_CPU)/(256*N) = (16^6)/(256*1024) = 61
+ * Duty Cycle can be changed be update the value in The Compare Register
+ */
+
+E_ErrorType MCAL_Timer0_Init(E_Prescaler prescaler,u8CompareValue CompareValue,u8DutyCyle Duty_Cycle)
 {
 	E_ErrorType error;
 	if(TIMER0_STATUS_ERROR == E_NOT_OK)
@@ -33,6 +59,7 @@ E_ErrorType MCAL_Timer0_OVF_Init(E_Prescaler prescaler)
 	}
 	else
 	{
+#if (TIMER0_MODE == OVER_FLOW_MODE)
 		TCNT0 = 0; //To start counting from 0
 		/* Configure the timer control register
 		 * . Non PWM mode FOC0=1
@@ -47,58 +74,28 @@ E_ErrorType MCAL_Timer0_OVF_Init(E_Prescaler prescaler)
 
 		switch (prescaler)
 		{
-		case 0:
+		case Prescaler_8:
 			SET_BIT(TCCR0,CS00);
-
 			break;
-
-		case 1:
+		case Prescaler_64:
 			SET_BIT(TCCR0,CS00);
 			SET_BIT(TCCR0,CS01);
 			break;
-		case 2:
+		case Prescaler_256:
 			SET_BIT(TCCR0,CS02);
 			break;
-		case 3:
+		case Prescaler_1024:
 			SET_BIT(TCCR0,CS00);
 			SET_BIT(TCCR0,CS02);
-
 			break;
 		default:
-
 			break;
 		}
-
-
 		//Enable Time0 Iterrupt
 		SET_BIT(TIMSK,TOIE0);
-	}
+#endif
 
-
-	return error;
-}
-
-
-/* Description:
- * Put our desired Compare value to match, It fires an interrupt when this value is matched by timer0
- * For clock=1Mhz and prescale every count will take 1ms
- * (Tick Time = (prescaler / freq.) ms
- * so we just need 250 counts to get 250ms every compare match.
- * put initial timer counter=0 and output compare register 0 --> 255 (250ms per compare match)
- * so we need timer to make 2 compare matches to get a 0.5 second
- *
- * Time0 Comapet match mode  ISR(TIMER0_COMP_vect)
- */
-
-E_ErrorType MCAL_Timer0_CTC_Init(E_Prescaler prescaler,u8CompareValue CompareValue)
-{
-	E_ErrorType error;
-	if(TIMER0_STATUS_ERROR == E_NOT_OK)
-	{
-		error = E_NOT_OK;
-	}
-	else
-	{
+#if (TIMER0_MODE == CTC_MODE)
 		TCNT0 = 0;    // Set Timer initial value to 0
 		OCR0  = CompareValue; // Set Compare Value
 
@@ -117,50 +114,28 @@ E_ErrorType MCAL_Timer0_CTC_Init(E_Prescaler prescaler,u8CompareValue CompareVal
 
 		switch (prescaler)
 		{
-		case 0:
+		case Prescaler_8:
 			SET_BIT(TCCR0,CS00);
-
 			break;
-
-		case 1:
+		case Prescaler_64:
 			SET_BIT(TCCR0,CS00);
 			SET_BIT(TCCR0,CS01);
 			break;
-		case 2:
+		case Prescaler_256:
 			SET_BIT(TCCR0,CS02);
 			break;
-		case 3:
+		case Prescaler_1024:
 			SET_BIT(TCCR0,CS00);
 			SET_BIT(TCCR0,CS02);
-
 			break;
 		default:
-
 			break;
+
 		}
-		SET_BIT(TIMSK,OCIE0);// Enable Timer0 Compare Interrupt
+		SET_BIT(TIMSK,OCIE0);
+#endif
 
-	}
-	return error;
-}
-
-
-/* Description:
- * Put our desired Duty Cycle to generate a PWM Signal On Pin PB3
- * F_PWM=(F_CPU)/(256*N) = (16^6)/(256*1024) = 61
- * Duty Cycle can be changed be update the value in The Compare Register
- */
-
-E_ErrorType MCAL_Timer0_FastPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle)
-{
-
-	E_ErrorType error;
-	if(TIMER0_STATUS_ERROR == E_NOT_OK)
-	{
-		error = E_NOT_OK;
-	}
-	else
-	{
+#if (TIMER0_MODE == FAST_PWM_MODE)
 
 		TCNT0 = 0;
 		OCR0 = Duty_Cycle;
@@ -183,52 +158,26 @@ E_ErrorType MCAL_Timer0_FastPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle
 
 		switch (prescaler)
 		{
-		case 0:
+		case Prescaler_8:
 			SET_BIT(TCCR0,CS00);
-
 			break;
-
-		case 1:
+		case Prescaler_64:
 			SET_BIT(TCCR0,CS00);
 			SET_BIT(TCCR0,CS01);
 			break;
-		case 2:
+		case Prescaler_256:
 			SET_BIT(TCCR0,CS02);
 			break;
-		case 3:
+		case Prescaler_1024:
 			SET_BIT(TCCR0,CS00);
 			SET_BIT(TCCR0,CS02);
-
 			break;
 		default:
-
 			break;
 		}
+#endif
 
-	}
-
-
-	return 0;
-}
-
-/* Description:
- * The PWM resolution for the phase correct PWM mode is fixed to eight bits. In phase correct
- * Put our desired Duty Cycle to generate a PWM Signal On Pin PB3
- * F_PWM=(F_CPU)/(256*N) = (16^6)/(256*1024) = 61
- * Duty Cycle can be changed be update the value in The Compare Register
- */
-
-
-E_ErrorType MCAL_Timer0_PCPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle)
-{
-	E_ErrorType error;
-
-	if(TIMER0_STATUS_ERROR == E_NOT_OK)
-	{
-		error = E_NOT_OK;
-	}
-	else
-	{
+#if (TIMER0_MODE == PCP_PWM_MODE)
 		TCNT0 = 0;
 		OCR0 = Duty_Cycle;
 		SET_BIT(TIMER0_PWM_PORT,TIMER0_PWM_PIN);
@@ -247,30 +196,37 @@ E_ErrorType MCAL_Timer0_PCPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle)
 		SET_BIT(TCCR0,COM01);
 		switch (prescaler)
 		{
-		case 0:
+		case Prescaler_8:
 			SET_BIT(TCCR0,CS00);
-
 			break;
-
-		case 1:
+		case Prescaler_64:
 			SET_BIT(TCCR0,CS00);
 			SET_BIT(TCCR0,CS01);
 			break;
-		case 2:
+		case Prescaler_256:
 			SET_BIT(TCCR0,CS02);
 			break;
-		case 3:
+		case Prescaler_1024:
 			SET_BIT(TCCR0,CS00);
 			SET_BIT(TCCR0,CS02);
-
 			break;
 		default:
-
 			break;
 		}
+#endif
+return error;
 	}
-	return error;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
