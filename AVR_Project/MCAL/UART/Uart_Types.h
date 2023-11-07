@@ -21,9 +21,7 @@ static void (*ptr2fun_transmit_complete)(void) = NULL;
 static void (*ptr2fun_receive_data)(void) = NULL;
 
 typedef unsigned char E_Errore_State_UART;
-typedef unsigned int u16;
-typedef unsigned char u8;
-typedef unsigned long int  u32;
+
 
 typedef enum
 {

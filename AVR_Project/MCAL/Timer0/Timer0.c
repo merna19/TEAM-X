@@ -24,9 +24,9 @@
  */
 
 
-E_ErrorType MCAL_Timer0_OVF_Init(E_Prescaler prescaler)
+E_Timer0ErrorType MCAL_Timer0_OVF_Init(E_Prescaler prescaler)
 {
-	E_ErrorType error;
+	E_Timer0ErrorType error;
 	if(TIMER0_STATUS_ERROR == E_NOT_OK)
 	{
 		error = E_NOT_OK;
@@ -90,9 +90,9 @@ E_ErrorType MCAL_Timer0_OVF_Init(E_Prescaler prescaler)
  * Time0 Comapet match mode  ISR(TIMER0_COMP_vect)
  */
 
-E_ErrorType MCAL_Timer0_CTC_Init(E_Prescaler prescaler,u8CompareValue CompareValue)
+E_Timer0ErrorType MCAL_Timer0_CTC_Init(E_Prescaler prescaler,u8CompareValue CompareValue)
 {
-	E_ErrorType error;
+	E_Timer0ErrorType error;
 	if(TIMER0_STATUS_ERROR == E_NOT_OK)
 	{
 		error = E_NOT_OK;
@@ -151,10 +151,10 @@ E_ErrorType MCAL_Timer0_CTC_Init(E_Prescaler prescaler,u8CompareValue CompareVal
  * Duty Cycle can be changed be update the value in The Compare Register
  */
 
-E_ErrorType MCAL_Timer0_FastPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle)
+E_Timer0ErrorType MCAL_Timer0_FastPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle)
 {
 
-	E_ErrorType error;
+	E_Timer0ErrorType error;
 	if(TIMER0_STATUS_ERROR == E_NOT_OK)
 	{
 		error = E_NOT_OK;
@@ -219,9 +219,9 @@ E_ErrorType MCAL_Timer0_FastPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle
  */
 
 
-E_ErrorType MCAL_Timer0_PCPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle)
+E_Timer0ErrorType MCAL_Timer0_PCPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle)
 {
-	E_ErrorType error;
+	E_Timer0ErrorType error;
 
 	if(TIMER0_STATUS_ERROR == E_NOT_OK)
 	{

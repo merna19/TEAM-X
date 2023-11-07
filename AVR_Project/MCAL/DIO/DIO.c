@@ -1,6 +1,7 @@
 
 #include "DIO_interface.h"
 #include "DIO_Types.h"
+#include "commons_macros.h"
 
 
 E_ErrorType MCAL_Dio_Init(S_Dio *Dio_Config)

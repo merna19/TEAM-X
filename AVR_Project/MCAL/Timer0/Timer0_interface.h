@@ -31,12 +31,12 @@
 
 
 
-E_ErrorType MCAL_Timer0_OVF_Init(E_Prescaler prescaler);
+E_Timer0ErrorType MCAL_Timer0_OVF_Init(E_Prescaler prescaler);
 
-E_ErrorType MCAL_Timer0_CTC_Init(E_Prescaler prescaler,u8CompareValue CompareValue);
+E_Timer0ErrorType MCAL_Timer0_CTC_Init(E_Prescaler prescaler,u8CompareValue CompareValue);
 
-E_ErrorType MCAL_Timer0_FastPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle);
+E_Timer0ErrorType MCAL_Timer0_FastPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle);
 
-E_ErrorType MCAL_Timer0_PCPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle);
+E_Timer0ErrorType MCAL_Timer0_PCPWM_Init(E_Prescaler prescaler,u8DutyCyle Duty_Cycle);
 
 #endif /* TIMER0_INTERFACE_H_ */

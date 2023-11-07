@@ -10,7 +10,7 @@
 #include "Uart_interface.h"
 
 /* UART initialization */
-E_Errore_State_UART MCAL_UART_init(u32 baudRate)
+E_Errore_State_UART MCAL_UART_init(unsigned long int baudRate)
 {
 	E_Errore_State_UART error =OK;
 	if(UART_STATUS_ERROR==NOT_OK)
@@ -21,12 +21,12 @@ E_Errore_State_UART MCAL_UART_init(u32 baudRate)
 	{
 
 
-		u32 BRValue = (F_CPU/(16UL*baudRate)) - 1;
+		unsigned long int BRValue = (F_CPU/(16UL*baudRate)) - 1;
 
 		/* Set baud rate */
 		UCSRC &= ~(1<<URSEL);
-		UBRRH = (u8)(BRValue>>8);
-		UBRRL = (u8)BRValue;
+		UBRRH = (unsigned char)(BRValue>>8);
+		UBRRL = (unsigned char)BRValue;
 
 		/* Enable receiver and transmitter */
 		UCSRB = (1<<RXEN)|(1<<TXEN);//|(1<<RXCIE);
@@ -42,7 +42,7 @@ E_Errore_State_UART MCAL_UART_init(u32 baudRate)
 
 
 /* UART sends character or number by synchronous  way */
-E_Errore_State_UART MCAL_UART_send_sysch(u8 Data)
+E_Errore_State_UART MCAL_UART_send_sysch(unsigned char Data)
 {
 	E_Errore_State_UART error =OK;
 	if(UART_STATUS_ERROR==NOT_OK)
@@ -113,7 +113,7 @@ E_Errore_State_UART MCAL_UART_send_str_sysch(char*Str)
 	}
 	else
 	{
-		for(u8 i=0;Str[i]!='\0';i++)
+		for(char i=0;Str[i]!='\0';i++)
 		{
 
 			u8LocalReturn=MCAL_UART_send_sysch(Str[i]);
@@ -124,7 +124,7 @@ E_Errore_State_UART MCAL_UART_send_str_sysch(char*Str)
 }
 
 /* UART receives data  by synchronous  way */
-u8 MCAL_UART_receive_sysch()
+unsigned char MCAL_UART_receive_sysch()
 {
 	/* Wait for data to be received */
 	while ( !(UCSRA & (1<<RXC)) );

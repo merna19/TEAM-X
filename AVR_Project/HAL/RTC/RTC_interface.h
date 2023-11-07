@@ -17,6 +17,7 @@
 #include <stdbool.h>
 
 u8Data buffer[20];
+S_RTCData RTCData;
 
 
 E_RTC_ErrorType HAL_RTC_Init(S_RTCData *RTCData);

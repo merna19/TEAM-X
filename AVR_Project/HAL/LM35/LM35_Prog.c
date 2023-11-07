@@ -9,11 +9,11 @@
 
 
 /* Function that reads the temperature value */
-LM35_TempValue HAL_LM35_readTemp(LM35_ADC_val)
+LM35_TempValue HAL_LM35_readTemp(LM35_ADC_val val)
 {
 	LM35_TempValue temp =0;
 	/* Calculate the temperature from the ADC value */
-	temp = (((500*LM35_ADC_val)/1023));
+	temp = (((500*val)/1023));
 	/* Return the temperature value */
 	return temp;
 }

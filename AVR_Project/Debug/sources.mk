@@ -20,14 +20,20 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+APP \
 HAL/Button \
 HAL/Buzzrer \
 HAL/IR \
 HAL/KeyPad \
 HAL/LCD \
+HAL/LDR \
 HAL/LED \
+HAL/LM35 \
+HAL/PIR \
 HAL/Password \
 HAL/RTC \
+HAL/SERVO \
+HAL/Solenoid \
 MCAL/ADC \
 MCAL/DIO \
 MCAL/EEPROM \
@@ -36,5 +42,15 @@ MCAL/I2C \
 MCAL/Timer0 \
 MCAL/Timer1 \
 MCAL/UART \
+SERVICE/CheckIR \
+SERVICE/CurtainsSetFlag \
+SERVICE/DisplayDateTime \
+SERVICE/EVERYTHING_ON \
+SERVICE/EnterPass \
+SERVICE/LEDs_Control \
+SERVICE/LockHouse \
+SERVICE/OpenDoor \
+SERVICE/SET_ON_FLAG \
+SERVICE/TempControl \
 . \
 

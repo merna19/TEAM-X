@@ -8,6 +8,16 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include SERVICE/TempControl/subdir.mk
+-include SERVICE/SET_ON_FLAG/subdir.mk
+-include SERVICE/OpenDoor/subdir.mk
+-include SERVICE/LockHouse/subdir.mk
+-include SERVICE/LEDs_Control/subdir.mk
+-include SERVICE/EnterPass/subdir.mk
+-include SERVICE/EVERYTHING_ON/subdir.mk
+-include SERVICE/DisplayDateTime/subdir.mk
+-include SERVICE/CurtainsSetFlag/subdir.mk
+-include SERVICE/CheckIR/subdir.mk
 -include MCAL/UART/subdir.mk
 -include MCAL/Timer1/subdir.mk
 -include MCAL/Timer0/subdir.mk
@@ -16,14 +26,20 @@ RM := rm -rf
 -include MCAL/EEPROM/subdir.mk
 -include MCAL/DIO/subdir.mk
 -include MCAL/ADC/subdir.mk
+-include HAL/Solenoid/subdir.mk
+-include HAL/SERVO/subdir.mk
 -include HAL/RTC/subdir.mk
 -include HAL/Password/subdir.mk
+-include HAL/PIR/subdir.mk
+-include HAL/LM35/subdir.mk
 -include HAL/LED/subdir.mk
+-include HAL/LDR/subdir.mk
 -include HAL/LCD/subdir.mk
 -include HAL/KeyPad/subdir.mk
 -include HAL/IR/subdir.mk
 -include HAL/Buzzrer/subdir.mk
 -include HAL/Button/subdir.mk
+-include APP/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -57,11 +73,13 @@ AVR_Project.lss \
 AVR_Project.lss \
 AVR_Project.lss \
 AVR_Project.lss \
+AVR_Project.lss \
 
 FLASH_IMAGE += \
 AVR_Project.hex \
 
 SIZEDUMMY += \
+sizedummy \
 sizedummy \
 sizedummy \
 sizedummy \

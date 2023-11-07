@@ -7,7 +7,7 @@
 
 #include "RTC_interface.h"
 #include "../../MCAL/I2C/I2C.h"
-#include "../LCD/lcd_Interface.h"
+//#include "../LCD/lcd_Interface.h"
 
 
 
@@ -22,11 +22,11 @@ E_RTC_ErrorType HAL_RTC_Init(S_RTCData *RTCData)
 	{
 		error = RTC_E_NOT_OK;
 	}
-	else if((RTCData->day_num > MAX_DAY_NUMBER) || (RTCData->month > MAX_MONTH_NUMBER)  || (RTCData->seconds > MAX_SECOND_NUMBER) || (RTCData->minutse > MAX_MINUTE_NUMBER) || (RTCData->hours > MAX_HOUR_NUMBER))
-	{
-		error = RTC_E_DATE_FORMAT;
-
-	}
+//	else if((RTCData->day_num > MAX_DAY_NUMBER) || (RTCData->month > MAX_MONTH_NUMBER)  || (RTCData->seconds > MAX_SECOND_NUMBER) || (RTCData->minutse > MAX_MINUTE_NUMBER) || (RTCData->hours > MAX_HOUR_NUMBER))
+//	{
+//		error = RTC_E_DATE_FORMAT;
+//
+//	}
 	else
 	{
 		/* First Write the Time Format*/

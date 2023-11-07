@@ -9,7 +9,7 @@
 #define TIMER0_TYPES_H_
 
 
-typedef unsigned char E_ErrorType;
+typedef unsigned char E_Timer0ErrorType;
 typedef unsigned char u8CompareValue;
 typedef unsigned char u8DutyCyle;
 
