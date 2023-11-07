@@ -7,41 +7,44 @@
 #include "GARAGE.h"
 #define F_CPU 16000000UL
 #include <util/delay.h>
-void SERVICE_GARAGE_Einit(void)
-{
-	HAL_ULTRASONIC_EINIT();
-	LCD_vinit();
+E_GARAGE_ERROR SERVICE_GARAGE_Einit(void)
+{	E_GARAGE_ERROR error=GARAGE_OK;
+	error=HAL_ULTRASONIC_EINIT();
+	error=HAL_LCD_init();
 	_delay_ms(200);
+	return error;
 }
-void SERVICE_GARAGE_openDoor(void)
-{
+E_GARAGE_ERROR SERVICE_GARAGE_openDoor(void)
+{	E_GARAGE_ERROR error=GARAGE_OK;
 	//MARIEM: CALL servo to open at 0 deg
-	LCD_vsend_string("open");
+	error=HAL_LCD_sendString("open");
+	return error;
 }
-void SERVICE_GARAGE_closeDoor(void)
+E_GARAGE_ERROR SERVICE_GARAGE_closeDoor(void)
 {	
+	E_GARAGE_ERROR error=GARAGE_OK;
 	unsigned short distance=DOOR_HIEGHT;
 	unsigned char garagePOS=0;
 	
 	while(garagePOS<180)//not completely closed 
-	{	LCD_vclearscreen();
-		LCD_vsend_string("ANGLE: ");
-		LCD_integerToString(garagePOS);
+	{	error=HAL_LCD_clearScreen();
+		error=HAL_LCD_sendString("ANGLE: ");
+		error=HAL_LCD_integerToString(garagePOS);
 		_delay_ms(500);
-		HAL_ULTRASONIC_EdistanceESTIMATION(&distance);
-		LCD_vclearscreen();
-		LCD_integerToString(distance);
-		LCD_vmove_cursor(2,1);
+		error=HAL_ULTRASONIC_EdistanceESTIMATION(&distance);
+		error=HAL_LCD_clearScreen();
+		error=HAL_LCD_integerToString(distance);
+		error=HAL_LCD_goToRowColumn(2,1);
 		
 		if (distance<=DOOR_THER)
 		{	_delay_ms(300);
 			if (distance<=DOOR_THER)//OBSTACLE
-			{	LCD_vsend_string("WATCH OUT");
+			{	error=HAL_LCD_sendString("WATCH OUT");
 				_delay_ms(700);
-				LCD_vmove_cursor(2,1);
-				LCD_vsend_string("open garage again");
+				error=HAL_LCD_goToRowColumn(2,1);
+				error=HAL_LCD_sendString("open garage again");
 				_delay_ms(800);
-				SERVICE_GARAGE_openDoor();
+				error=SERVICE_GARAGE_openDoor();
 				garagePOS=0;
 			}
 			else//no obstacle
@@ -54,12 +57,13 @@ void SERVICE_GARAGE_closeDoor(void)
 		else
 		{	garagePOS+=10;
 			//MARIEM: CALL SERVO TO SPIN AT garagePOS degree
-			LCD_vsend_string("Increment SERVO");
+			error=HAL_LCD_sendString("Increment SERVO");
 			_delay_ms(700);
-			LCD_integerToString(garagePOS);
+			error=HAL_LCD_integerToString(garagePOS);
 		}
 	}
-	LCD_vclearscreen();
-	LCD_vsend_string("DOOR CLOSED");
+	error=HAL_LCD_clearScreen();
+	error=HAL_LCD_sendString("DOOR CLOSED");
 	_delay_ms(2000);
+	return error;
 }

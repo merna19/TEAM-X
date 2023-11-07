@@ -6,7 +6,7 @@ DIO.c
 
 GARAGE.c
 
-LCD.c
+LCD_Prog.c
 
 main.c
 

@@ -9,15 +9,15 @@
 #ifndef GARAGE_H_
 #define GARAGE_H_
 #include "Ultrasonic_Interface.h"
-#include "LCD.h"
-
+#include "LCD_Interface.h"
+#include "GARAGE_Type.h"
 #define DOOR_HIEGHT	60
 #define DOOR_THER	20
 
 
-void SERVICE_GARAGE_Einit(void);
-void SERVICE_GARAGE_openDoor(void);
-void SERVICE_GARAGE_closeDoor(void);
+E_GARAGE_ERROR SERVICE_GARAGE_Einit(void);
+E_GARAGE_ERROR SERVICE_GARAGE_openDoor(void);
+E_GARAGE_ERROR SERVICE_GARAGE_closeDoor(void);
 
 
 
