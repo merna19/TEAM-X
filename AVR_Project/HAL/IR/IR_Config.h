@@ -8,7 +8,6 @@
 #ifndef HAL_IR_IR_CONFIG_H_
 #define HAL_IR_IR_CONFIG_H_
 
-#include "DIO_Types.h"
 
 #define IR_SENSOR_PIN	1
 #define IR_PORT		DIO_PORTA

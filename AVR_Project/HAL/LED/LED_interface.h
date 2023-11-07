@@ -8,7 +8,7 @@
 #ifndef HAL_LED_LED_INTERFACE_H_
 #define HAL_LED_LED_INTERFACE_H_
 
-#include "DIO_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
 #include <util/delay.h>
 #include "LED_Types.h"
 

@@ -15,15 +15,14 @@
 
 
 #include "LCD_Interface.h"
-#include "DIO_interface.h"
-#include "DIO_Types.h"
+
 #include <util/delay.h>
 
 
 /* Function to initialize the LCD */
-E_ErrorType HAL_LCD_init()
+E_LCD_ErrorType HAL_LCD_init()
 {
-	E_ErrorType u8LocalReturn = E_NOT_OK;
+	E_LCD_ErrorType u8LocalReturn = LCD_E_NOT_OK;
 	/* Initialize control pins as output */
 	S_Dio LCD_RS_interface= {LCD_RS_PORT , LCD_RS_PIN , OUTPUT};
 
@@ -73,9 +72,9 @@ E_ErrorType HAL_LCD_init()
 }
 
 /* Function to send command to LCD */
-E_ErrorType HAL_LCD_sendCommand(LCD_commandType command)
+E_LCD_ErrorType HAL_LCD_sendCommand(LCD_commandType command)
 {
-	E_ErrorType u8LocalReturn = E_NOT_OK;
+	E_LCD_ErrorType u8LocalReturn = LCD_E_NOT_OK;
 	S_Dio LCD_RS_interface = {LCD_RS_PORT , LCD_RS_PIN , PIN_LOW};
 	u8LocalReturn = MCAL_Dio_WritePin(&LCD_RS_interface, PIN_LOW);
 	_delay_ms(1);
@@ -138,9 +137,9 @@ E_ErrorType HAL_LCD_sendCommand(LCD_commandType command)
 }
 
 /* Function to display a character on the LCD */
-E_ErrorType HAL_LCD_sendCharacter(LCD_dataType data)
+E_LCD_ErrorType HAL_LCD_sendCharacter(LCD_dataType data)
 {
-	E_ErrorType u8LocalReturn = E_NOT_OK;
+	E_LCD_ErrorType u8LocalReturn = LCD_E_NOT_OK;
 	S_Dio LCD_RS_interface = {LCD_RS_PORT , LCD_RS_PIN , PIN_LOW};
 	u8LocalReturn = MCAL_Dio_WritePin(&LCD_RS_interface, PIN_HIGH);
 	/* If RW is configurable */
@@ -202,9 +201,9 @@ E_ErrorType HAL_LCD_sendCharacter(LCD_dataType data)
 }
 
 /* Function to display a string on the LCD */
-E_ErrorType HAL_LCD_sendString(const char *str)
+E_LCD_ErrorType HAL_LCD_sendString(const char *str)
 {
-	E_ErrorType u8LocalReturn = E_NOT_OK;
+	E_LCD_ErrorType u8LocalReturn = LCD_E_NOT_OK;
 	unsigned char i;
 	for(i =0 ; str[i] != '\0'; i++)
 	{
@@ -214,9 +213,9 @@ E_ErrorType HAL_LCD_sendString(const char *str)
 }
 
 /* Function to clear the LCD screen */
-E_ErrorType HAL_LCD_clearScreen()
+E_LCD_ErrorType HAL_LCD_clearScreen()
 {
-	E_ErrorType u8LocalReturn = E_NOT_OK;
+	E_LCD_ErrorType u8LocalReturn = LCD_E_NOT_OK;
 	u8LocalReturn = HAL_LCD_sendCommand(CLEAR_COMMAND);
 	_delay_ms(10);
 	u8LocalReturn = HAL_LCD_sendCommand(SHIFT_CURSOR_RIGHT);
@@ -225,40 +224,40 @@ E_ErrorType HAL_LCD_clearScreen()
 
 /* Function to display a string on a certain row and column on the LCD screen */
 
-E_ErrorType HAL_LCD_displaystringRowColumn(const char *Str ,LCD_row row,LCD_column col)
+E_LCD_ErrorType HAL_LCD_displaystringRowColumn(const char *Str ,LCD_row row,LCD_column col)
 {
-	E_ErrorType u8LocalReturn = E_NOT_OK;
+	E_LCD_ErrorType u8LocalReturn = LCD_E_NOT_OK;
 	u8LocalReturn = HAL_LCD_goToRowColumn(row, col);
 	u8LocalReturn = HAL_LCD_sendString(Str);
 	return u8LocalReturn;
 }
 
 /* Function to move the cursor to a certain row and column on the LCD screen */
-E_ErrorType HAL_LCD_goToRowColumn(LCD_row row, LCD_column col)
+E_LCD_ErrorType HAL_LCD_goToRowColumn(LCD_row row, LCD_column col)
 {
-	E_ErrorType u8LocalReturn = E_NOT_OK;
+	E_LCD_ErrorType u8LocalReturn = LCD_E_NOT_OK;
 	unsigned char Address = 0;
 	/* calculate the required address */
 	switch(row)
 	{
 		case 0:
 			Address = col;
-			u8LocalReturn = E_OK;
+			u8LocalReturn = LCD_E_OK;
 			break;
 		case 1:
 			Address = col + row1col1;
-			u8LocalReturn = E_OK;
+			u8LocalReturn = LCD_E_OK;
 			break;
 		case 2:
 			Address = col + row2col1;
-			u8LocalReturn = E_OK;
+			u8LocalReturn = LCD_E_OK;
 			break;
 		case 3:
 			Address = col + row3col1;
-			u8LocalReturn = E_OK;
+			u8LocalReturn = LCD_E_OK;
 			break;
 		default :
-			u8LocalReturn = E_NOT_OK;
+			u8LocalReturn = LCD_E_NOT_OK;
 			break;
 	}
 	u8LocalReturn = HAL_LCD_sendCommand(SET_CURSOR_LOCATION | Address);
@@ -266,9 +265,9 @@ E_ErrorType HAL_LCD_goToRowColumn(LCD_row row, LCD_column col)
 }
 
 /* Function to convert an integer to string */
-E_ErrorType HAL_LCD_integerToString(LCD_integer num)
+E_LCD_ErrorType HAL_LCD_integerToString(LCD_integer num)
 {
-	E_ErrorType u8LocalReturn = E_NOT_OK;
+	E_LCD_ErrorType u8LocalReturn = LCD_E_NOT_OK;
 	signed char str[16];
 	unsigned char i, rem, len=0;
 	LCD_integer n = num;
@@ -286,7 +285,7 @@ E_ErrorType HAL_LCD_integerToString(LCD_integer num)
 	}
 	if(len >= 15)
 	{
-		u8LocalReturn = E_NOT_OK;
+		u8LocalReturn = LCD_E_NOT_OK;
 		return u8LocalReturn;
 	}
 	for(i=0 ; i<len ; i++)
@@ -301,12 +300,11 @@ E_ErrorType HAL_LCD_integerToString(LCD_integer num)
 }
 
 /* Function to display an integer on a certain row and column on the LCD screen */
-E_ErrorType HAL_LCD_displayIntegerRowColumn(LCD_integer num, LCD_row row, LCD_column col)
+E_LCD_ErrorType HAL_LCD_displayIntegerRowColumn(LCD_integer num, LCD_row row, LCD_column col)
 {
-	E_ErrorType u8LocalReturn = E_NOT_OK;
+	E_LCD_ErrorType u8LocalReturn = LCD_E_NOT_OK;
 	u8LocalReturn = HAL_LCD_goToRowColumn(row, col);
 	u8LocalReturn = HAL_LCD_integerToString(num);
-	return u8LocalReturn;
 
 	return u8LocalReturn;
 }

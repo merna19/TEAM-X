@@ -6,8 +6,8 @@
  */
 
 #include "RTC_interface.h"
-#include "I2C.h"
-#include "lcd_Interface.h"
+#include "../../MCAL/I2C/I2C.h"
+#include "../LCD/lcd_Interface.h"
 
 
 

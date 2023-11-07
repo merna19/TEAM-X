@@ -60,16 +60,6 @@ AVR_Project.lss \
 
 FLASH_IMAGE += \
 AVR_Project.hex \
-AVR_Project.hex \
-AVR_Project.hex \
-AVR_Project.hex \
-AVR_Project.hex \
-AVR_Project.hex \
-AVR_Project.hex \
-AVR_Project.hex \
-AVR_Project.hex \
-AVR_Project.hex \
-AVR_Project.hex \
 
 SIZEDUMMY += \
 sizedummy \

@@ -7,8 +7,8 @@
 
 
 #include "Password.h"
-#include "Uart_interface.h"
-#include "lcd_Interface.h"
+#include "../../MCAL/UART/Uart_interface.h"
+#include "../LCD/lcd_Interface.h"
 #include "util/delay.h"
 
 u8Value Enter_Password(void)

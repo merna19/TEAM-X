@@ -8,7 +8,13 @@
 #ifndef HAL_LCD_TYPES_H_
 #define HAL_LCD_TYPES_H_
 
-#include "DIO_Types.h"
+
+
+typedef enum
+{
+	LCD_E_OK,
+	LCD_E_NOT_OK
+}E_LCD_ErrorType;
 
 typedef signed char LCD_commandType;
 typedef signed char LCD_dataType;

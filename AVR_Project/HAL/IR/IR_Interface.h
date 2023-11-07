@@ -12,7 +12,7 @@
 #include "IR_Private.h"
 #include "IR_Registers.h"
 #include "IR_Types.h"
-#include "DIO_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
 
 
 

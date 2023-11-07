@@ -1,7 +1,7 @@
 
-#include "lcd_Interface.h"
-#include "RTC_interface.h"
-#include "password.h"
+#include "HAL/LCD/lcd_Interface.h"
+#include "HAL/RTC/RTC_interface.h"
+#include "HAL/Password/password.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>

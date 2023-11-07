@@ -8,7 +8,6 @@
 #ifndef HAL_BUTTON_BUTTON_CONFIG_H_
 #define HAL_BUTTON_BUTTON_CONFIG_H_
 
-#include "DIO_Types.h"
 
 /* Button  configuration */
 

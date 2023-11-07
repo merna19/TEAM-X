@@ -8,7 +8,7 @@
 #ifndef HAL_BUZZRER_BUZZER_INTERFACE_H_
 #define HAL_BUZZRER_BUZZER_INTERFACE_H_
 
-#include "DIO_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
 #include "Buzzer_Types.h"
 
 __EErrorType HAL_BUZZER_INIT(E_DioPort BUZZERPORT, E_DioPin BUZZERPin);

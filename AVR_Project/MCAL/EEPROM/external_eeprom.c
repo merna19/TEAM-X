@@ -1,6 +1,6 @@
 
 #include "external_eeprom.h"
-#include "twi.h"
+#include "../I2C/twi.h"
 
 uint8_t EEPROM_writeByte(uint16_t u16addr, uint8_t u8data)
 {

@@ -8,7 +8,6 @@
 
 
 #include "Uart_interface.h"
-#include "lcd_Interface.h"
 
 /* UART initialization */
 E_Errore_State_UART MCAL_UART_init(u32 baudRate)

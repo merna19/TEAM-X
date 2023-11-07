@@ -8,7 +8,7 @@
 #ifndef HAL_KEYPAD_KEYPAD_INTERFACE_H_
 #define HAL_KEYPAD_KEYPAD_INTERFACE_H_
 
-#include "DIO_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
 #include "Keypad_Types.h"
 #include "Keypad_registers.h"
 #include "Keypad_private.h"
