@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="room" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/room" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/room" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="GYM.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="GYM.h" />
+		<Unit filename="Laundry.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Laundry.h" />
+		<Unit filename="Restaurant.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Restaurant.h" />
+		<Unit filename="RoomData.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="RoomData.h" />
+		<Unit filename="Spa.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Spa.h" />
+		<Unit filename="functions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="heads.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="service.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="service.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
