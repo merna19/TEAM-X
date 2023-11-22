@@ -1,0 +1,245 @@
+# depslib dependency file v1.0
+1697703320 source:d:\mohamed_saad\personal project\room\main.c
+	"RoomData.h"
+
+1697703134 d:\mohamed_saad\personal project\room\roomdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1697702744 source:d:\mohamed_saad\personal project\room\roomdata.c
+	"RoomData.h"
+
+1697715089 source:c:\ayaya\nti 4 month\new folder\room\main.c
+	"RoomData.h"
+
+1697717509 c:\ayaya\nti 4 month\new folder\room\roomdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1697718085 source:c:\ayaya\nti 4 month\new folder\room\roomdata.c
+	"RoomData.h"
+
+1697715089 source:c:\ayaya\nti 4 month\new folder\room1\main.c
+	"RoomData.h"
+
+1697720635 c:\ayaya\nti 4 month\new folder\room1\roomdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1697720590 source:c:\ayaya\nti 4 month\new folder\room1\roomdata.c
+	"RoomData.h"
+
+1697715089 source:c:\ayaya\nti 4 month\new folder\room2\main.c
+	"RoomData.h"
+
+1697720764 c:\ayaya\nti 4 month\new folder\room2\roomdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1697720667 source:c:\ayaya\nti 4 month\new folder\room2\roomdata.c
+	"RoomData.h"
+
+1697715090 source:e:\mohamed\nti\c project\room2\main.c
+	"RoomData.h"
+
+1697783209 e:\mohamed\nti\c project\room2\roomdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1697784341 source:e:\mohamed\nti\c project\room2\roomdata.c
+	"RoomData.h"
+
+1697784393 source:c:\ayaya\nti 4 month\new folder\room3\main.c
+	"RoomData.h"
+
+1697799862 c:\ayaya\nti 4 month\new folder\room3\roomdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1697800341 source:c:\ayaya\nti 4 month\new folder\room3\roomdata.c
+	"RoomData.h"
+
+1697784393 source:c:\ayaya\nti 4 month\new folder\room4\main.c
+	"RoomData.h"
+
+1697822601 c:\ayaya\nti 4 month\new folder\room4\roomdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1697909662 source:c:\ayaya\nti 4 month\new folder\room5\main.c
+	"RoomData.h"
+
+1697913148 c:\ayaya\nti 4 month\new folder\room5\roomdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"heads.h"
+	"Laundry.h"
+	"service.h"
+	"Spa.h"
+
+1697910258 c:\ayaya\nti 4 month\new folder\room5\heads.h
+
+1697913444 source:c:\ayaya\nti 4 month\new folder\room5\roomdata.c
+	"RoomData.h"
+
+1697912019 source:c:\ayaya\nti 4 month\new folder\room5\functions.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"heads.h"
+
+1697914666 c:\ayaya\nti 4 month\new folder\room5\laundry.h
+
+1697908783 c:\ayaya\nti 4 month\new folder\room5\service.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"RoomData.h"
+	"heads.h"
+	"Spa.h"
+	"Laundry.h"
+
+1697908783 c:\ayaya\nti 4 month\new folder\room5\spa.h
+	"service.h"
+
+1697913841 source:c:\ayaya\nti 4 month\new folder\room5\service.c
+	"service.h"
+
+1697907240 source:c:\ayaya\nti 4 month\new folder\room5\spa.c
+	"Spa.h"
+
+1697914663 source:c:\ayaya\nti 4 month\new folder\room5\laundry.c
+	"Laundry.h"
+	"service.h"
+
+1697914663 source:c:\ayaya\nti 4 month\new folder\roomsemifinal\laundry.c
+	"Laundry.h"
+	"service.h"
+
+1697914666 c:\ayaya\nti 4 month\new folder\roomsemifinal\laundry.h
+
+1697959371 c:\ayaya\nti 4 month\new folder\roomsemifinal\service.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"RoomData.h"
+	"heads.h"
+	"Spa.h"
+	"Laundry.h"
+	"Restaurant.h"
+	"GYM.h"
+
+1697959323 c:\ayaya\nti 4 month\new folder\roomsemifinal\roomdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"heads.h"
+	"Laundry.h"
+	"service.h"
+	"Spa.h"
+	"Restaurant.h"
+	"GYM.h"
+
+1697959336 c:\ayaya\nti 4 month\new folder\roomsemifinal\heads.h
+
+1697908783 c:\ayaya\nti 4 month\new folder\roomsemifinal\spa.h
+	"service.h"
+
+1697909662 source:c:\ayaya\nti 4 month\new folder\roomsemifinal\main.c
+	"RoomData.h"
+
+1697960330 source:c:\ayaya\nti 4 month\new folder\roomsemifinal\restaurant.c
+	"Restaurant.h"
+	"string.h"
+
+1697958529 c:\ayaya\nti 4 month\new folder\roomsemifinal\restaurant.h
+	"heads.h"
+
+1697959546 source:c:\ayaya\nti 4 month\new folder\roomsemifinal\service.c
+	"service.h"
+
+1697907240 source:c:\ayaya\nti 4 month\new folder\roomsemifinal\spa.c
+	"Spa.h"
+
+1697959485 source:c:\ayaya\nti 4 month\new folder\roomsemifinal\roomdata.c
+	"RoomData.h"
+
+1697959323 source:c:\ayaya\nti 4 month\new folder\roomsemifinal\functions.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"heads.h"
+
+1697921990 c:\ayaya\nti 4 month\new folder\roomsemifinal\gym.h
+
+1697921990 source:c:\ayaya\nti 4 month\new folder\roomsemifinal\gym.c
+	"GYM.h"
+
+1697959323 source:c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\functions.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"heads.h"
+
+1697959336 c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\heads.h
+
+1697921990 source:c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\gym.c
+	"GYM.h"
+
+1697921990 c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\gym.h
+
+1697914663 source:c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\laundry.c
+	"Laundry.h"
+	"service.h"
+
+1697914666 c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\laundry.h
+
+1697959371 c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\service.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"RoomData.h"
+	"heads.h"
+	"Spa.h"
+	"Laundry.h"
+	"Restaurant.h"
+	"GYM.h"
+
+1697959323 c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\roomdata.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"heads.h"
+	"Laundry.h"
+	"service.h"
+	"Spa.h"
+	"Restaurant.h"
+	"GYM.h"
+
+1697908783 c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\spa.h
+	"service.h"
+
+1697958529 c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\restaurant.h
+	"heads.h"
+
+1697960402 source:c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\restaurant.c
+	"Restaurant.h"
+	"string.h"
+
+1697959485 source:c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\roomdata.c
+	"RoomData.h"
+
+1697959546 source:c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\service.c
+	"service.h"
+
+1697907240 source:c:\ayaya\nti 4 month\new folder\new folder\roomsemifinal\spa.c
+	"Spa.h"
+
