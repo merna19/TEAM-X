@@ -9,7 +9,7 @@
 #define TIMER0_TYPES_H_
 
 
-typedef unsigned char E_ErrorType;
+typedef unsigned char E_Timer0ErrorType;
 typedef unsigned char u8CompareValue;
 typedef unsigned char u8DutyCyle;
 
@@ -26,10 +26,7 @@ typedef enum
 #define E_OK 0
 #define E_NOT_OK 1
 
-#define prescaler_8    0
-#define prescaler_64   1
-#define prescaler_256  2
-#define prescaler_1024 3
+
 
 
 #define TIMER0_STATUS_ERROR E_OK

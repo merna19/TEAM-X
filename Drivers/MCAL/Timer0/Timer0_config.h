@@ -8,7 +8,7 @@
 #ifndef TIMER0_CONFIG_H_
 #define TIMER0_CONFIG_H_
 
-
+#include <avr/io.h>
 
 #define CS00	0
 #define CS01	1
